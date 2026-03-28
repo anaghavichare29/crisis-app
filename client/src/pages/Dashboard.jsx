@@ -15,7 +15,7 @@ function Dashboard({ dark, setDark }) {
   const fetchCrises = async (lat, lng) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/crisis/nearby?lat=${lat}&lng=${lng}`
+        `https://crisis-backend-8zo1.onrender.com/api/crisis/nearby?lat=${lat}&lng=${lng}`
       );
       setCrises(res.data);
       setLoading(false);

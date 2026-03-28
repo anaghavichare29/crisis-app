@@ -15,7 +15,7 @@ function HelpSupport() {
   // 🔄 Fetch contacts
 
   const fetchContacts = async () => {
-    const res = await axios.get("http://127.0.0.1:5000/api/contacts");
+    const res = await axios.get("https://crisis-backend-8zo1.onrender.com/api/contacts");
     setContacts(res.data);
   };
 
@@ -28,12 +28,12 @@ function HelpSupport() {
     if (!name || !phone) return;
 
     if (editId) {
-      await axios.put(`http://127.0.0.1:5000/api/contacts/${editId}`, {
+      await axios.put(`https://crisis-backend-8zo1.onrender.com/api/contacts/${editId}`, {
         name,
         phone,
       });
     } else {
-      await axios.post("http://127.0.0.1:5000/api/contacts", {
+      await axios.post("https://crisis-backend-8zo1.onrender.com/api/contacts", {
         name,
         phone,
       });
@@ -47,7 +47,7 @@ function HelpSupport() {
 
   // ❌ Delete
   const deleteContact = async (id) => {
-    await axios.delete(`http://127.0.0.1:5000/api/contacts/${id}`);
+    await axios.delete(`https://crisis-backend-8zo1.onrender.com/api/contacts/${id}`);
     fetchContacts();
   };
 
