@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/navbar/Navbar"; 
+import CrisisMap from "../components/CrisisMap/CrisisMap"; 
+import IncidentForm from "../components/incidentForm/IncidentForm"; 
 import "./Dashboard.css"; 
 
 function Dashboard({ dark, setDark }) {
   const [crises, setCrises] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const fetchCrises = async (lat, lng) => {
     try {
@@ -42,6 +46,11 @@ function Dashboard({ dark, setDark }) {
     );
   }, []);
 
+  const handleAddNewIncident = (newIncident) => {
+    setCrises([newIncident, ...crises]); 
+    setIsFormOpen(false); 
+  };
+
   return (
     <div className={`dashboard-wrapper ${dark ? "dark-theme" : ""}`}>
       <Navbar dark={dark} setDark={setDark} />
@@ -50,7 +59,7 @@ function Dashboard({ dark, setDark }) {
         <header className="dashboard-header">
           <div>
             <h1 className="dashboard-title">Nearby Crisis Alerts</h1>
-            <p className="dashboard-subtitle">Real-time updates for your area</p>
+            <p className="dashboard-subtitle">Real-time updates for Mumbai</p>
           </div>
         </header>
 
@@ -68,20 +77,30 @@ function Dashboard({ dark, setDark }) {
         )}
 
         {!loading && !error && crises.length > 0 && (
-          <div className="crisis-grid">
-            {crises.map((crisis, index) => (
-              <div key={index} className="crisis-card">
-                <div className="card-header">
-                  <span className="alert-badge">Alert</span>
+          <>
+            <CrisisMap crises={crises} />
+
+            <div className="crisis-grid">
+              {crises.map((crisis) => (
+                <div key={crisis.id} className="crisis-card">
+                  <div className="card-header">
+                    <span className="alert-badge">Alert</span>
+                  </div>
+                  <h2 className="card-title">{crisis.title}</h2>
+                  <p className="card-desc">{crisis.description}</p>
+                  <button className="card-action">View Details</button>
                 </div>
-                <h2 className="card-title">{crisis.title || "Emergency Alert"}</h2>
-                <p className="card-desc">
-                  {crisis.description || "Details are currently unavailable. Please stay alert."}
-                </p>
-                <button className="card-action">View Details</button>
-              </div>
-            ))}
-          </div>
+              ))}
+
+              <button 
+                className="add-incident-card"
+                onClick={() => setIsFormOpen(true)}
+              >
+                <span className="add-icon">+</span>
+                <span className="add-text">Report New Incident</span>
+              </button>
+            </div>
+          </>
         )}
 
         {!loading && !error && crises.length === 0 && (
@@ -90,6 +109,17 @@ function Dashboard({ dark, setDark }) {
           </div>
         )}
       </main>
+
+      {isFormOpen && (
+        <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <IncidentForm 
+              onAddIncident={handleAddNewIncident} 
+              onCancel={() => setIsFormOpen(false)} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -75,12 +75,10 @@ function Login({ setUser }) {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-200 via-white to-orange-200">
 
-      {/* NAVBAR */}
       <nav className="flex justify-between items-center px-8 py-4 bg-white/70 backdrop-blur-md shadow-sm">
         <h1 className="font-semibold text-gray-800">{t.title}</h1>
 
         <div className="flex items-center gap-4">
-          {/* LANGUAGE DROPDOWN */}
           <select
             value={lang}
             onChange={(e) => setLang(e.target.value)}
@@ -97,7 +95,6 @@ function Login({ setUser }) {
         </div>
       </nav>
 
-      {/* LOGIN SECTION */}
       <div className="flex flex-1 items-center justify-center px-6 py-16">
         <div className="bg-white/40 backdrop-blur-xl rounded-2xl shadow-xl p-10 w-full max-w-lg min-h-[500px]">
 
@@ -145,7 +142,6 @@ function Login({ setUser }) {
         </div>
       </div>
 
-      {/* HOW TO USE */}
       <div className="bg-white py-16 px-8 text-center">
         <h2 className="text-3xl font-bold text-blue-600 mb-10">
           {t.howTitle}
@@ -169,7 +165,6 @@ function Login({ setUser }) {
         </div>
       </div>
 
-      {/* NEW SECTION: EMERGENCY RESOURCES */}
       <div className="bg-blue-50 py-16 px-8 text-center">
         <h2 className="text-3xl font-bold text-blue-700 mb-6">
           {t.emergencyTitle}
@@ -185,7 +180,6 @@ function Login({ setUser }) {
         </div>
       </div>
 
-      {/* FOOTER */}
       <footer className="bg-blue-600 text-white text-center py-4">
         © 2026 Crisis Awareness Platform
       </footer>

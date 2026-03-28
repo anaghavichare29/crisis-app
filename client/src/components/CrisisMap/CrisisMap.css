@@ -1,0 +1,50 @@
+/* --- Map Wrapper --- */
+.crisis-map-wrapper {
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  overflow: hidden; /* Ensures the map doesn't spill out of the rounded corners */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--card-border, #e2e8f0);
+  transition: border-color 0.3s ease;
+}
+
+/* --- Map Container --- */
+.crisis-map-container {
+  height: 400px;
+  width: 100%;
+  /* Z-index 0 is crucial! Leaflet has a very high default z-index. 
+    If we don't set this to 0, the map will overlap your Navbar dropdowns. 
+  */
+  z-index: 0; 
+}
+
+/* --- Custom Popup Content --- */
+.custom-popup strong {
+  display: block;
+  color: #dc2626; /* Alert Red */
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+}
+
+.custom-popup p {
+  margin: 0;
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* --- Dark Mode Overrides for Leaflet Popups --- */
+/* These rules take effect when the dashboard wrapper has the .dark-theme class */
+.dark-theme .leaflet-popup-content-wrapper,
+.dark-theme .leaflet-popup-tip {
+  background-color: var(--card-bg, #1e293b);
+  color: var(--text-main, #f8fafc);
+}
+
+.dark-theme .custom-popup strong {
+  color: #ef4444; /* Slightly lighter red for better contrast in dark mode */
+}
+
+.dark-theme .custom-popup p {
+  color: var(--text-muted, #94a3b8);
+}

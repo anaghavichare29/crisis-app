@@ -31,7 +31,6 @@ const handleLogout = () => {
 
   return (
     <nav className="navbar">
-      {/* Left Side: Hamburger Menu */}
       <div className="nav-section" ref={menuRef}>
         <button 
           className={`menu-toggle ${isMenuOpen ? "is-active" : ""}`} 
@@ -53,10 +52,8 @@ const handleLogout = () => {
         </ul>
       </div>
 
-      {/* Right Side: Theme Toggle & Profile */}
       <div className="nav-section" ref={profileRef}>
         
-        {/* The transplanted Dashboard Theme Button */}
         <button 
           onClick={() => setDark(!dark)} 
           className="theme-toggle-btn"

@@ -1,0 +1,143 @@
+/* --- Wrapper: Creates the Two-Pane Layout --- */
+.incident-form-wrapper {
+  display: flex;
+  background-color: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Keeps the map corners rounded */
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* --- Left Pane: The Form --- */
+.form-pane {
+  flex: 1; /* Takes up half the space */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.5rem;
+  color: var(--text-main, #1e293b);
+}
+
+.form-subtitle {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted, #64748b);
+}
+
+.incident-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main, #334155);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--card-border, #cbd5e1);
+  border-radius: 8px;
+  background-color: var(--bg-color, #f8fafc);
+  color: var(--text-main, #0f172a);
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.submit-btn {
+  flex: 1;
+  background-color: #dc2626; 
+  color: white;
+  border: none;
+  padding: 0.875rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover { background-color: #b91c1c; }
+
+.cancel-btn {
+  flex: 1;
+  background-color: transparent; 
+  color: var(--text-main, #334155);
+  border: 1px solid var(--card-border, #cbd5e1);
+  padding: 0.875rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover { background-color: var(--card-border, #f1f5f9); }
+
+/* --- Right Pane: The Map --- */
+.map-pane {
+  flex: 1; /* Takes up the other half of the space */
+  position: relative;
+  background-color: #e2e8f0;
+  min-height: 400px;
+}
+
+.form-map-container {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.map-hint {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  pointer-events: none; /* Allows clicking through the hint box */
+  z-index: 10;
+}
+
+/* --- Responsive Layout for Smaller Screens --- */
+@media (max-width: 768px) {
+  .incident-form-wrapper {
+    flex-direction: column; /* Stacks the form on top of the map on mobile */
+  }
+  .map-pane {
+    min-height: 300px;
+  }
+}

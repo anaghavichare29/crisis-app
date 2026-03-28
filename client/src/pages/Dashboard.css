@@ -160,3 +160,91 @@
 .card-action:hover {
   background-color: var(--accent-hover);
 }
+
+/* --- Add Incident Card (Dotted/Dashed) --- */
+.add-incident-card {
+  background-color: transparent;
+  /* Using dashed instead of solid to represent an empty/action state */
+  border: 2px dashed var(--text-muted); 
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px; /* Ensures it matches the rough height of other cards */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+
+.add-incident-card:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: rgba(59, 130, 246, 0.05); /* A very faint blue tint */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.add-icon {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.add-incident-card:hover .add-icon {
+  transform: scale(1.1); /* Scales the plus icon up slightly on hover */
+}
+
+.add-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* --- Modal Overlay & Content --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* Creates a nice glass effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensures it sits above Leaflet maps and Navbars */
+  padding: 1rem;
+  
+  /* Simple fade-in animation */
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 1000px; /* Limits how wide the two-pane form gets */
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+/* Removes the top/bottom margins of the form when inside a modal */
+.modal-content .incident-form-wrapper {
+  margin: 0; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
