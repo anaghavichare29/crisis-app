@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const translations = {
   en: {
+    navtitle:"Crisis Awareness",
     title: "ACT.AWARE.EMPOWER",
     login: "Log in to explore crises happening around you",
     signup: "Create an account to stay informed and safe",
@@ -32,7 +33,8 @@ const translations = {
   },
 
   hi: {
-    title: "संकट जागरूकता",
+    navtitle: "संकट जागरूकता",
+    title: "कार्य करें। जागरूक बनें। सशक्त बनें।",
     login: "अपने आसपास हो रहे संकटों को देखने के लिए लॉगिन करें",
     signup: "सुरक्षित रहने के लिए खाता बनाएं",
     email: "अपना ईमेल दर्ज करें",
@@ -76,7 +78,7 @@ function Login({ setUser }) {
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-200 via-white to-orange-200">
 
       <nav className="flex justify-between items-center px-8 py-4 bg-white/70 backdrop-blur-md shadow-sm">
-        <h1 className="font-semibold text-gray-800">{t.title}</h1>
+        <h1 className="font-semibold text-gray-800">{t.navtitle}</h1>
 
         <div className="flex items-center gap-4">
           <select

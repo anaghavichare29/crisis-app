@@ -47,7 +47,7 @@ const handleLogout = () => {
         <ul className={`dropdown-menu ${isMenuOpen ? "show" : ""}`}>
           <li className="dropdown-item">Dashboard</li>
           <li className="dropdown-item">Settings</li>
-          <li className="dropdown-item">Crisis Alerts</li>
+          <li className="dropdown-item" onClick={()=>navigate("/alerts")}>Crisis Alerts</li>
           <li className="dropdown-item" onClick={() => navigate("/help")}>Help Support</li>
         </ul>
       </div>

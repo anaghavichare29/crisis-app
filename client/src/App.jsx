@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/login/Login";
 import Dashboard from "./pages/Dashboard";
 import HelpSupport from "./pages/HelpSupport";
+import CrisisAlerts from "./pages/CrisisAlerts";
 import "./App.css";
 
 function App() {
@@ -52,6 +53,11 @@ function App() {
         />
 
         <Route path="/help" element={<HelpSupport />} />
+
+        <Route
+          path="/alerts"
+          element={user ? <CrisisAlerts /> : <Navigate to="/login" />}
+        />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

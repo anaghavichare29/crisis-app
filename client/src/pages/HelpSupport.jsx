@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaPhoneAlt, FaEdit, FaTrash } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 function HelpSupport() {
   const navigate = useNavigate();
@@ -12,14 +13,15 @@ function HelpSupport() {
   const [editId, setEditId] = useState(null);
 
   // 🔄 Fetch contacts
-  useEffect(() => {
-    fetchContacts();
-  }, []);
 
   const fetchContacts = async () => {
     const res = await axios.get("http://127.0.0.1:5000/api/contacts");
     setContacts(res.data);
   };
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
 
   // ➕ Add / ✏️ Update
   const handleSave = async () => {
@@ -72,18 +74,17 @@ function HelpSupport() {
     { name: "Electricity Emergency", phone: "1912" },
     { name: "Railway Helpline", phone: "139" },
     { name: "Tourist Helpline", phone: "1363" },
-    { name: "Coast Guard", phone: "1554" }
+    { name: "Coast Guard", phone: "1554" },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-white p-6">
-
       {/* 🔙 BACK BUTTON */}
       <button
         onClick={() => navigate("/dashboard")}
-        className="mb-4 bg-blue-600 text-white px-4 py-2 rounded"
+        className="mb-4 text-white px-4 py-2 rounded"
       >
-        ⬅ Back to Dashboard
+        <IoMdArrowRoundBack color="blue" size={23}/>
       </button>
 
       <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
@@ -95,7 +96,10 @@ function HelpSupport() {
 
       <div className="grid md:grid-cols-3 gap-4 mb-10">
         {emergencyContacts.map((c, i) => (
-          <div key={i} className="bg-white p-4 rounded-xl shadow flex justify-between items-center">
+          <div
+            key={i}
+            className="bg-white p-4 rounded-xl shadow flex justify-between items-center"
+          >
             <div>
               <p className="font-semibold">{c.name}</p>
               <p className="text-gray-600">{c.phone}</p>
@@ -105,7 +109,7 @@ function HelpSupport() {
               href={`tel:${c.phone}`}
               className="bg-blue-600 text-white p-3 rounded-full"
             >
-              <FaPhoneAlt />
+              <FaPhoneAlt size={18}/>
             </a>
           </div>
         ))}
@@ -163,7 +167,7 @@ function HelpSupport() {
                   href={`tel:${c.phone}`}
                   className="bg-green-600 text-white p-3 rounded-full hover:bg-green-700"
                 >
-                  <FaPhoneAlt />
+                  <FaPhoneAlt size={15}/>
                 </a>
               </div>
 
@@ -187,7 +191,6 @@ function HelpSupport() {
           ))}
         </div>
       )}
-
     </div>
   );
 }
