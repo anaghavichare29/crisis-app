@@ -13,7 +13,9 @@ function HelpSupport({ dark, setDark }) {
   const [editId, setEditId] = useState(null);
 
   const fetchContacts = async () => {
-    const res = await axios.get("https://crisis-backend-8zo1.onrender.com/api/contacts");
+    const res = await axios.get(
+      "https://crisis-backend-8zo1.onrender.com/api/contacts",
+    );
     setContacts(res.data);
   };
 
@@ -25,9 +27,15 @@ function HelpSupport({ dark, setDark }) {
     if (!name || !phone) return;
 
     if (editId) {
-      await axios.put(`https://crisis-backend-8zo1.onrender.com/api/contacts/${editId}`, { name, phone });
+      await axios.put(
+        `https://crisis-backend-8zo1.onrender.com/api/contacts/${editId}`,
+        { name, phone },
+      );
     } else {
-      await axios.post("https://crisis-backend-8zo1.onrender.com/api/contacts", { name, phone });
+      await axios.post(
+        "https://crisis-backend-8zo1.onrender.com/api/contacts",
+        { name, phone },
+      );
     }
 
     setName("");
@@ -37,7 +45,9 @@ function HelpSupport({ dark, setDark }) {
   };
 
   const deleteContact = async (id) => {
-    await axios.delete(`https://crisis-backend-8zo1.onrender.com/api/contacts/${id}`);
+    await axios.delete(
+      `https://crisis-backend-8zo1.onrender.com/api/contacts/${id}`,
+    );
     fetchContacts();
   };
 
@@ -66,15 +76,26 @@ function HelpSupport({ dark, setDark }) {
   ];
 
   return (
-    <div className={dark ? "min-h-screen bg-gray-900 text-white p-6" : "min-h-screen bg-gradient-to-br from-blue-100 to-white p-6"}>
-      
+    <div
+      className={
+        dark
+          ? "min-h-screen bg-gray-900 text-white p-6"
+          : "min-h-screen bg-gradient-to-br from-blue-100 to-white p-6"
+      }
+    >
       {/* TOP BAR */}
       <div className="flex justify-between items-center mb-6">
         <button onClick={() => navigate("/dashboard")}>
-          <IoMdArrowRoundBack size={25} className={dark ? "text-white" : "text-blue-700"} />
+          <IoMdArrowRoundBack
+            size={25}
+            className={dark ? "text-white" : "text-blue-700"}
+          />
         </button>
 
-        <button onClick={() => setDark(!dark)} className="px-4 py-2 bg-blue-600 text-white rounded">
+        <button
+          onClick={() => setDark(!dark)}
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
           {dark ? "☀️ Light" : "🌙 Dark"}
         </button>
       </div>
@@ -90,14 +111,24 @@ function HelpSupport({ dark, setDark }) {
 
       <div className="grid md:grid-cols-3 gap-4 mb-10">
         {emergencyContacts.map((c, i) => (
-          <div key={i} className={`${dark ? "bg-gray-800 text-white" : "bg-white"} p-5 rounded-xl shadow flex justify-between items-center`}>
+          <div
+            key={i}
+            className={`${dark ? "bg-gray-800 text-white" : "bg-white"} p-5 rounded-xl shadow flex items-center justify-between`}
+          >
+            {/* LEFT */}
             <div>
               <p className="font-semibold">{c.name}</p>
-              <p className={dark ? "text-gray-300" : "text-gray-600"}>{c.phone}</p>
+              <p className={dark ? "text-gray-300" : "text-gray-600"}>
+                {c.phone}
+              </p>
             </div>
 
-            <a href={`tel:${c.phone}`} className="bg-blue-600 text-white p-3 rounded-full">
-              <FaPhoneAlt />
+            {/* RIGHT ICON */}
+            <a
+              href={`tel:${c.phone}`}
+              className="flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
+            >
+              <FaPhoneAlt size={14} />
             </a>
           </div>
         ))}
@@ -123,7 +154,10 @@ function HelpSupport({ dark, setDark }) {
           onChange={(e) => setPhone(e.target.value)}
         />
 
-        <button onClick={handleSave} className={`px-4 text-white rounded ${editId ? "bg-yellow-500" : "bg-green-600"}`}>
+        <button
+          onClick={handleSave}
+          className={`px-4 text-white rounded ${editId ? "bg-yellow-500" : "bg-green-600"}`}
+        >
           {editId ? "Update" : "Add"}
         </button>
       </div>
@@ -131,25 +165,38 @@ function HelpSupport({ dark, setDark }) {
       {/* CONTACT CARDS */}
       <div className="grid md:grid-cols-3 gap-5">
         {contacts.map((c) => (
-          <div key={c._id} className={`${dark ? "bg-gray-800 text-white" : "bg-white"} p-5 rounded-xl shadow`}>
-            
+          <div
+            key={c._id}
+            className={`${dark ? "bg-gray-800 text-white" : "bg-white"} p-5 rounded-xl shadow`}
+          >
             <div className="flex justify-between items-center">
               <div>
                 <p className="text-lg font-semibold">{c.name}</p>
-                <p className={dark ? "text-gray-300" : "text-gray-500"}>{c.phone}</p>
+                <p className={dark ? "text-gray-300" : "text-gray-500"}>
+                  {c.phone}
+                </p>
               </div>
 
-              <a href={`tel:${c.phone}`} className="bg-green-600 text-white p-3 rounded-full">
+              <a
+                href={`tel:${c.phone}`}
+                className="bg-green-600 text-white p-3 rounded-full"
+              >
                 <FaPhoneAlt />
               </a>
             </div>
 
             <div className="flex justify-between mt-4">
-              <button onClick={() => editContact(c)} className="flex items-center gap-1 text-yellow-500">
+              <button
+                onClick={() => editContact(c)}
+                className="flex items-center gap-1 text-yellow-500"
+              >
                 <FaEdit /> Edit
               </button>
 
-              <button onClick={() => deleteContact(c._id)} className="flex items-center gap-1 text-red-500">
+              <button
+                onClick={() => deleteContact(c._id)}
+                className="flex items-center gap-1 text-red-500"
+              >
                 <FaTrash /> Delete
               </button>
             </div>
