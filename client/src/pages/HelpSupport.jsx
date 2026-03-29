@@ -92,7 +92,7 @@ function HelpSupport() {
       </h1>
 
       {/* 🚨 TOP CONTACTS */}
-      <h2 className="text-xl font-semibold mb-4">Top Emergency Contacts</h2>
+      <h2 className="text-xl font-semibold mb-4 text-blue-700">Top Emergency Contacts</h2>
 
       <div className="grid md:grid-cols-3 gap-4 mb-10">
         {emergencyContacts.map((c, i) => (
@@ -116,18 +116,18 @@ function HelpSupport() {
       </div>
 
       {/* 👤 PERSONAL CONTACTS */}
-      <h2 className="text-xl font-semibold mb-4">Your Emergency Contacts</h2>
+      <h2 className="text-xl font-semibold mb-4 text-blue-700">Your Emergency Contacts</h2>
 
       {/* FORM */}
       <div className="flex gap-3 mb-6">
         <input
-          className="border p-2 rounded w-full"
+          className="border p-2 rounded w-full capitalize"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          className="border p-2 rounded w-full"
+          className="border p-2 rounded w-full capitalize"
           placeholder="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
