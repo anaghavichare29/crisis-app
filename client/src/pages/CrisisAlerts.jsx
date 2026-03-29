@@ -123,7 +123,7 @@ function CrisisAlerts({ dark, setDark }) {
             </span>
 
             {/* TITLE */}
-            <h2 className="text-2xl font-semibold mt-2 text-gray-800">
+            <h2 className={`${dark?"text-white":"text-gray-800"} text-2xl font-semibold mt-2`}>
               {c.title}
             </h2>
 

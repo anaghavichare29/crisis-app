@@ -180,10 +180,10 @@ function HelpSupport({ dark, setDark }) {
               {/* TOP SECTION */}
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="text-lg font-semibold text-gray-800">
+                  <p className={`${dark?"text-white":"text-gray-800"} text-lg font-semibold`}>
                     {c.name}
                   </p>
-                  <p className="text-gray-500">{c.phone}</p>
+                  <p className={`${dark?"text-white":"text-gray-500"}`}>{c.phone}</p>
                 </div>
 
                 {/* CALL ICON */}
