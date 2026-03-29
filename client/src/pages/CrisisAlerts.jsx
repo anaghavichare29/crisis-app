@@ -115,7 +115,7 @@ function CrisisAlerts({ dark, setDark }) {
         {crises.map((c, index) => (
           <div
             key={index}
-            className="bg-white w-full p-6 rounded-xl shadow hover:shadow-lg transition"
+            className={`${dark ? "bg-gray-800 text-white" : "bg-white"} w-full p-6 rounded-xl shadow hover:shadow-lg transition`}
           >
             {/* ALERT BADGE */}
             <span className="bg-red-100 text-red-600 px-3 py-1 text-sm rounded-full">

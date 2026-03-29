@@ -120,7 +120,7 @@ function HelpSupport({ dark, setDark }) {
         {emergencyContacts.map((c, i) => (
           <div
             key={i}
-            className="bg-white p-4 rounded-xl shadow flex justify-between items-center"
+            className={`${dark ? "bg-gray-800 text-white" : "bg-white"} w-full p-6 rounded-xl shadow hover:shadow-lg transition`}
           >
             <div>
               <p className="font-semibold">{c.name}</p>
@@ -175,7 +175,7 @@ function HelpSupport({ dark, setDark }) {
           {contacts.map((c) => (
             <div
               key={c._id}
-              className="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition"
+              className={`${dark ? "bg-gray-800 text-white" : "bg-white"} w-full p-6 rounded-xl shadow hover:shadow-lg transition`}
             >
               {/* TOP SECTION */}
               <div className="flex justify-between items-center">
