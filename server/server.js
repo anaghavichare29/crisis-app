@@ -8,9 +8,9 @@ const contactRoutes = require("./routes/contact");
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+console.log("Connecting to MongoDB...");
 // ✅ CONNECT TO MONGODB (PUT YOUR URL)
-mongoose.connect("mongodb+srv://admin:admin123@cluster0.bgm6eo8.mongodb.net/?appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 

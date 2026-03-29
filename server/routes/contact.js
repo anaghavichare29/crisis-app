@@ -15,16 +15,24 @@ router.get("/", async (req, res) => {
 // ✅ ADD contact
 router.post("/", async (req, res) => {
   try {
-    console.log("BODY RECEIVED:", req.body); // 👈 DEBUG
+    console.log("BODY:", req.body); // 👈 DEBUG
 
-    const contact = new Contact(req.body);
-    await contact.save();
+    const { name, phone } = req.body;
 
-    console.log("SAVED TO DB:", contact); // 👈 DEBUG
+    if (!name || !phone) {
+      return res.status(400).json({ error: "Name and phone required" });
+    }
 
-    res.json(contact);
+    const newContact = new Contact({
+      name,
+      phone,
+    });
+
+    await newContact.save();
+
+    res.status(201).json(newContact);
   } catch (err) {
-    console.error("ERROR:", err);
+    console.error("POST ERROR:", err.message); // 👈 IMPORTANT
     res.status(500).json({ error: err.message });
   }
 });
