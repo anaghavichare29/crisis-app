@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaPhoneAlt, FaEdit, FaTrash } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-function HelpSupport() {
+function HelpSupport({ dark, setDark }) {
   const navigate = useNavigate();
 
   const [contacts, setContacts] = useState([]);
@@ -15,7 +15,9 @@ function HelpSupport() {
   // 🔄 Fetch contacts
 
   const fetchContacts = async () => {
-    const res = await axios.get("https://crisis-backend-8zo1.onrender.com/api/contacts");
+    const res = await axios.get(
+      "https://crisis-backend-8zo1.onrender.com/api/contacts",
+    );
     setContacts(res.data);
   };
 
@@ -28,15 +30,21 @@ function HelpSupport() {
     if (!name || !phone) return;
 
     if (editId) {
-      await axios.put(`https://crisis-backend-8zo1.onrender.com/api/contacts/${editId}`, {
-        name,
-        phone,
-      });
+      await axios.put(
+        `https://crisis-backend-8zo1.onrender.com/api/contacts/${editId}`,
+        {
+          name,
+          phone,
+        },
+      );
     } else {
-      await axios.post("https://crisis-backend-8zo1.onrender.com/api/contacts", {
-        name,
-        phone,
-      });
+      await axios.post(
+        "https://crisis-backend-8zo1.onrender.com/api/contacts",
+        {
+          name,
+          phone,
+        },
+      );
     }
 
     setName("");
@@ -47,7 +55,9 @@ function HelpSupport() {
 
   // ❌ Delete
   const deleteContact = async (id) => {
-    await axios.delete(`https://crisis-backend-8zo1.onrender.com/api/contacts/${id}`);
+    await axios.delete(
+      `https://crisis-backend-8zo1.onrender.com/api/contacts/${id}`,
+    );
     fetchContacts();
   };
 
@@ -78,21 +88,33 @@ function HelpSupport() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-white p-6">
+    <div className={dark 
+  ? "min-h-screen bg-gray-900 text-white p-6" 
+  : "min-h-screen bg-gradient-to-br from-blue-100 to-white p-6"}>
       {/* 🔙 BACK BUTTON */}
-      <button
-        onClick={() => navigate("/dashboard")}
-        className="mb-4 text-white px-4 py-2 rounded"
-      >
-        <IoMdArrowRoundBack color="blue" size={23}/>
-      </button>
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="text-white px-4 py-2 rounded"
+        >
+          <IoMdArrowRoundBack color="blue" size={23} />
+        </button>
 
+        <button
+          onClick={() => setDark(!dark)}
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
+          {dark ? "☀️ Light" : "🌙 Dark"}
+        </button>
+      </div>
       <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
         Emergency Support
       </h1>
 
       {/* 🚨 TOP CONTACTS */}
-      <h2 className="text-xl font-semibold mb-4 text-blue-700">Top Emergency Contacts</h2>
+      <h2 className="text-xl font-semibold mb-4 text-blue-700">
+        Top Emergency Contacts
+      </h2>
 
       <div className="grid md:grid-cols-3 gap-4 mb-10">
         {emergencyContacts.map((c, i) => (
@@ -109,14 +131,16 @@ function HelpSupport() {
               href={`tel:${c.phone}`}
               className="bg-blue-600 text-white p-3 rounded-full"
             >
-              <FaPhoneAlt size={18}/>
+              <FaPhoneAlt size={18} />
             </a>
           </div>
         ))}
       </div>
 
       {/* 👤 PERSONAL CONTACTS */}
-      <h2 className="text-xl font-semibold mb-4 text-blue-700">Your Emergency Contacts</h2>
+      <h2 className="text-xl font-semibold mb-4 text-blue-700">
+        Your Emergency Contacts
+      </h2>
 
       {/* FORM */}
       <div className="flex gap-3 mb-6">
@@ -167,7 +191,7 @@ function HelpSupport() {
                   href={`tel:${c.phone}`}
                   className="bg-green-600 text-white p-3 rounded-full hover:bg-green-700"
                 >
-                  <FaPhoneAlt size={15}/>
+                  <FaPhoneAlt size={15} />
                 </a>
               </div>
 

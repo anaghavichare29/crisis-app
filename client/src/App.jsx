@@ -52,11 +52,26 @@ function App() {
           }
         />
 
-        <Route path="/help" element={<HelpSupport />} />
-
         <Route
           path="/alerts"
-          element={user ? <CrisisAlerts /> : <Navigate to="/login" />}
+          element={
+            user ? (
+              <CrisisAlerts dark={dark} setDark={setDark} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        <Route
+          path="/help"
+          element={
+            user ? (
+              <HelpSupport dark={dark} setDark={setDark} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />
