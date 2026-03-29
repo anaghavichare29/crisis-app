@@ -7,7 +7,84 @@ function CrisisAlerts({ dark, setDark }) {
   const navigate = useNavigate();
 
   const crises = [
-    /* same data */
+    {
+      title: "Flood",
+      description: "Overflow of water causing damage to life and property.",
+      details:
+        "Floods occur due to heavy rainfall, river overflow, or dam failure. Stay on higher ground and avoid water currents.",
+    },
+    {
+      title: "Earthquake",
+      description: "Sudden shaking of the ground due to tectonic movements.",
+      details:
+        "Earthquakes can collapse buildings. Stay under sturdy furniture and avoid open areas.",
+    },
+    {
+      title: "Fire",
+      description: "Uncontrolled burning causing destruction.",
+      details:
+        "Use fire extinguishers if safe. Evacuate immediately and call emergency services.",
+    },
+    {
+      title: "Cyclone",
+      description: "Severe storm with strong winds and rain.",
+      details: "Stay indoors, secure windows, and avoid coastal areas.",
+    },
+    {
+      title: "Landslide",
+      description: "Movement of rock or soil down slopes.",
+      details: "Avoid hilly areas during heavy rains. Move to safer zones.",
+    },
+    {
+      title: "Heatwave",
+      description: "Extreme heat conditions affecting health.",
+      details: "Stay hydrated, avoid sunlight, and wear light clothing.",
+    },
+    {
+      title: "Cold Wave",
+      description: "Extreme drop in temperature.",
+      details: "Wear warm clothes and avoid exposure.",
+    },
+    {
+      title: "Pandemic",
+      description: "Spread of infectious disease globally.",
+      details: "Maintain hygiene, wear masks, and follow health guidelines.",
+    },
+    {
+      title: "Tsunami",
+      description: "Large sea waves caused by underwater disturbances.",
+      details: "Move inland immediately and avoid coastal areas.",
+    },
+    {
+      title: "Drought",
+      description: "Lack of water due to low rainfall.",
+      details: "Conserve water and follow government advisories.",
+    },
+    {
+      title: "Industrial Accident",
+      description: "Hazardous incidents in factories.",
+      details: "Evacuate area and avoid inhaling toxic gases.",
+    },
+    {
+      title: "Road Accident",
+      description: "Vehicle collisions causing injuries.",
+      details: "Call emergency services and avoid crowding.",
+    },
+    {
+      title: "Gas Leak",
+      description: "Leakage of harmful gases.",
+      details: "Avoid flames and ventilate the area immediately.",
+    },
+    {
+      title: "Terror Attack",
+      description: "Violent act threatening public safety.",
+      details: "Stay alert, follow authorities, and avoid crowded areas.",
+    },
+    {
+      title: "Power Outage",
+      description: "Loss of electricity supply.",
+      details: "Use backup power and avoid using elevators.",
+    },
   ];
 
   return (
